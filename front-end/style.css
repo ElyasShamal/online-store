@@ -14,7 +14,7 @@ header {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-size: 23px;
+  font-size: 21px;
   color: white;
 }
 
@@ -54,9 +54,45 @@ nav a {
   background-position: center center;
 }
 
-.main-2 {
+.section-1 {
+  margin-top: 30px;
+  background-color: whitesmoke;
+}
+
+.slider-container {
+  margin: 50px 30px 0px 30px;
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 30px;
+}
+
+.section-1 {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 2rem;
+}
+
+.slider img {
+  width: 100%;
+  height: 50%;
+}
+
+.slider-text {
+  position: relative;
+  color: black;
+  width: 100%;
+  padding: 30px;
+}
+
+.slider-text h3 {
+  margin: 0px;
+  font-size: 24px;
+}
+
+.slider-text p {
+  margin: 5px 0 0;
+  font-size: 18px;
 }
 
 @media (max-width: 768px) {
