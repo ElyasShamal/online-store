@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,27 +35,38 @@
         <ul>
           <li><a href="./home.html">Home</a></li>
           <li><a href="./Inventory.html">Inventory</a></li>
-          <li><a href="./list-item.html">List Item</a></li>
+          <li><a href="#">List Item</a></li>
         </ul>
       </nav>
     </header>
-    <main>
-        <section class="search">
+<main>
+    <section class="form-section">
+        <div class="container">
+            <h2>List Item</h2>
             <form>
-                <input type="text" placeholder="Search...">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="product Name">
+          
+              <label for="image">Image</label>
+              <input type="text" id="image" name="image" placeholder="Image url">
+              <button>Upload</button>
+          <br>
+          <br>
+              <label for="quantity">Quantity</label>
+              <select id="" name="quantity">
+                <option value="">1</option>
+                <option value="">2</option>
+                <option value="">3</option>
+              </select>
+          
+              <label for="description">Description</label>
+              <textarea id="description" name="description" placeholder="Write product description.." style="height:100px"></textarea>
+          
+              <input type="submit" value="Submit">
             </form>
-              
-        </section>
-        
-            <h2 id="loading">⌛ Loading...</h2>
-       
-        <section id="available-products">
-            <!-- data from api -->
-            <div id="available-item"></div>
-            
-        </section>
-       
-    </main>
+          </div>
+    </section>
+</main>
     
   
   

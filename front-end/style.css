@@ -101,11 +101,12 @@ nav a {
 .buy-btn {
   width: 100%;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 15px;
   background-color: #1e90ff;
   color: white;
   border: #1e90ff;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 /* footer section */
@@ -149,33 +150,92 @@ i {
   outline: none;
   border-bottom: 2px solid #1e90ff;
 }
-
+#loading {
+  text-align: center;
+  color: #1e90ff;
+}
 #available-products {
-  margin: 2rem;
+  margin: 2rem 5rem;
 }
 #available-item {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 80px;
+  grid-gap: 50px;
 }
 
 .card img {
-  width: 80%;
-  height: 60%;
+  width: 100%;
+  height: 50%;
 }
 
 .card h2 {
+  text-align: center;
   color: #1e90ff;
   margin: 10px;
   font-size: 24px;
 }
 
 .card p {
+  text-align: justify;
   margin: 5px 0 0;
   font-size: 18px;
   height: 50px;
   overflow-y: hidden;
   padding: 10px;
+}
+
+/* form section */
+
+.form-section {
+  margin: 30px auto;
+  width: 30%;
+}
+
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type="submit"] {
+  background-color: #1e90ff;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.container h2 {
+  color: #1e90ff;
+  text-align: center;
+}
+
+.container button {
+  background-color: #1e90ff;
+  padding: 7px 30px;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

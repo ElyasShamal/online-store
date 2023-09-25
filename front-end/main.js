@@ -20,11 +20,21 @@ bars.addEventListener("click", () => {
   }
 });
 
+// when dom loaded
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("https://online-store-1ip2.onrender.com/inventory")
-    .then((res) => res.json())
-    .then((products) => products.forEach((product) => createElements(product)));
+  getData();
 });
+
+const getData = async () => {
+  const response = await fetch(
+    "https://online-store-1ip2.onrender.com/inventory"
+  );
+  const getProducts = await response.json();
+  getProducts.forEach((product) => createElements(product));
+  if (response) {
+    hideLoader();
+  }
+};
 
 function createElements(product) {
   const card = document.createElement("div");
@@ -47,6 +57,11 @@ function createElements(product) {
   document.getElementById("available-item").appendChild(card);
 }
 
+function hideLoader() {
+  document.getElementById("loading").style.display = "none";
+}
+
+// create slider
 function createSlider(containerClass) {
   fetch("https://online-store-1ip2.onrender.com/inventory")
     .then((response) => response.json())
@@ -73,18 +88,14 @@ function createSlider(containerClass) {
         const img = document.createElement("img");
         img.src = images[sliderIndex];
         slider.appendChild(img);
-        // create sliderTextElem
         const sliderTextElem = document.createElement("div");
         sliderTextElem.classList.add("slider-text");
-        // create h3
         const h3 = document.createElement("h3");
         h3.textContent = sliderText[sliderIndex].name;
         sliderTextElem.appendChild(h3);
-        // create a paragraph
         const p = document.createElement("p");
         p.textContent = sliderText[sliderIndex].description;
         sliderTextElem.appendChild(p);
-        // create a button
         const button = document.createElement("button");
         button.textContent = sliderText[sliderIndex].addtocard;
         button.id = "button-card";
@@ -94,10 +105,9 @@ function createSlider(containerClass) {
         slider.appendChild(sliderTextElem);
       }
 
-      // Get all elements with the specified class
       const sliders = document.querySelectorAll(containerClass);
 
-      // Create a slider for each matching element
+      // Create a slider for each  element
       sliders.forEach((slider) => {
         updateSlider(slider);
 
