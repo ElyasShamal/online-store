@@ -36,7 +36,7 @@ nav li {
 nav a {
   color: white;
   text-decoration: none;
-  padding-left: 30px;
+  padding-left: 40px;
 }
 
 .menu-toggle {
@@ -70,7 +70,8 @@ nav a {
 .section-1 {
   text-align: center;
   padding-top: 20px;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  color: #1e90ff;
 }
 
 .slider img {
@@ -86,6 +87,7 @@ nav a {
 }
 
 .slider-text h3 {
+  color: #1e90ff;
   margin: 0px;
   font-size: 24px;
 }
@@ -93,6 +95,87 @@ nav a {
 .slider-text p {
   margin: 5px 0 0;
   font-size: 18px;
+  height: 40px;
+  overflow-y: hidden;
+}
+.buy-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #1e90ff;
+  color: white;
+  border: #1e90ff;
+  border-radius: 20px;
+}
+
+/* footer section */
+.footer {
+  position: absolute;
+  justify-content: center;
+  width: 100%;
+  background-color: #1e90ff;
+  min-height: 300px;
+}
+
+.Socail-link {
+  text-align: center;
+  margin-top: 50px;
+  color: white;
+}
+
+.Socail-link a,
+i {
+  text-decoration: none;
+  margin-top: 30px;
+  color: white;
+  padding-left: 20px;
+  font-size: 30px;
+}
+
+/* available-products */
+.search form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1%;
+}
+
+.search form input {
+  width: 40%;
+  padding: 4px;
+  margin: 3rem 0;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #1e90ff;
+}
+
+#available-products {
+  margin: 2rem;
+}
+#available-item {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 80px;
+}
+
+.card img {
+  width: 80%;
+  height: 60%;
+}
+
+.card h2 {
+  color: #1e90ff;
+  margin: 10px;
+  font-size: 24px;
+}
+
+.card p {
+  margin: 5px 0 0;
+  font-size: 18px;
+  height: 50px;
+  overflow-y: hidden;
+  padding: 10px;
 }
 
 @media (max-width: 768px) {
@@ -100,16 +183,11 @@ nav a {
     display: block;
     font-size: 24px;
     cursor: pointer;
+    margin-bottom: 25px;
   }
 
   nav {
     display: none;
-    position: fixed;
-    top: 66.5px;
-    right: 0;
-    width: 50%;
-    height: 50%;
-    background-color: white;
   }
 
   nav.show {
@@ -117,6 +195,12 @@ nav a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    top: 122px;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background-color: white;
   }
 
   nav ul {
@@ -134,5 +218,10 @@ nav a {
 
   nav li a {
     color: black;
+  }
+
+  .search form input {
+    width: 100%;
+    margin: 2rem;
   }
 }

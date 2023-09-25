@@ -20,6 +20,33 @@ bars.addEventListener("click", () => {
   }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("https://online-store-1ip2.onrender.com/inventory")
+    .then((res) => res.json())
+    .then((products) => products.forEach((product) => createElements(product)));
+});
+
+function createElements(product) {
+  const card = document.createElement("div");
+  card.className = "card";
+  const img = document.createElement("img");
+  img.src = product.image;
+  img.alt = product.name;
+  const h2 = document.createElement("h2");
+  h2.textContent = product.name;
+  const p = document.createElement("p");
+  p.textContent = product.description;
+
+  const buyButton = document.createElement("button");
+  buyButton.textContent = product.addtocard;
+  buyButton.classList.add("buy-btn");
+
+  //   add elements to dom
+  card.append(img, h2, p, buyButton);
+
+  document.getElementById("available-item").appendChild(card);
+}
+
 function createSlider(containerClass) {
   fetch("https://online-store-1ip2.onrender.com/inventory")
     .then((response) => response.json())
@@ -42,7 +69,7 @@ function createSlider(containerClass) {
 
       function updateSlider(slider) {
         slider.innerHTML = "";
-        // create img and add it to the slider
+
         const img = document.createElement("img");
         img.src = images[sliderIndex];
         slider.appendChild(img);
@@ -87,5 +114,4 @@ function createSlider(containerClass) {
     .catch((error) => console.error(error));
 }
 
-// Call createSlider function with the class selector for the divs
 createSlider(".slider");
