@@ -100,7 +100,7 @@ nav a {
   overflow-y: hidden;
 }
 .buy-btn {
-  width: 100%;
+  width: 50%;
   padding: 10px;
   margin-top: 15px;
   background-color: #1e90ff;
@@ -160,11 +160,11 @@ i {
 }
 
 #available-products {
-  margin: 2rem 5rem;
+  margin: 20rem 5rem 5rem 5rem;
 }
 #available-item {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 50px;
 }
 
@@ -243,6 +243,60 @@ input[type="submit"]:hover {
   cursor: pointer;
 }
 
+#searchResults {
+  position: absolute;
+  top: 160px;
+  width: 40%;
+  height: 250px;
+  overflow-x: hidden;
+}
+
+#searchResults img {
+  grid-row: 1 / 4;
+  width: 80px;
+  height: 80px;
+}
+
+#searchResults button {
+  padding: 0px 10px;
+  background-color: #1e90ff;
+  color: white;
+}
+
+.result-item h3 {
+  grid-column: 2 / span 2;
+}
+
+.result-item {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 20px;
+  margin: 20px;
+  z-index: 1;
+}
+
+@media (max-width: 1510px) {
+  .result-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .result-item button {
+    width: 30%;
+  }
+
+  #searchResults p {
+    display: none;
+  }
+}
+
+@media (max-width: 433px) {
+  .result-item button {
+    width: 40%;
+  }
+}
+
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -286,26 +340,22 @@ input[type="submit"]:hover {
   }
 
   .search form input {
-    width: 100%;
-    margin: 2rem;
+    width: 80%;
+    margin: 0px 8rem;
   }
-}
 
-#searchResults {
-  position: absolute;
-  top: 160px;
-  width: 40%;
-  height: 200px;
-  overflow-x: hidden;
-}
+  #searchResults {
+    width: 80%;
+    margin: 0px 8rem;
+  }
 
-#searchResults img {
-  width: 50px;
-}
+  #searchResults img {
+    height: 50px;
+    width: 50px;
+  }
 
-.result-item {
-  margin: 30px;
-  padding: 10px;
-
-  z-index: 1;
+  .result-item {
+    display: flex;
+    flex-direction: column;
+  }
 }

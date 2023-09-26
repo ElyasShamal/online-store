@@ -165,19 +165,25 @@ document.addEventListener("DOMContentLoaded", function () {
       const resultItem = document.createElement("div");
       resultItem.classList.add("result-item");
 
-      const title = document.createElement("h3");
-      title.textContent = item.name;
-
-      const description = document.createElement("p");
-      description.textContent = item.description;
-
       const image = document.createElement("img");
       image.src = item.image;
       image.alt = item.name;
 
+      const title = document.createElement("h3");
+      title.textContent = item.name;
+
+      const buyButton = document.createElement("button");
+      buyButton.textContent = item.addtocard;
+
+      const description = document.createElement("p");
+      description.textContent = item.description;
+
       resultItem.appendChild(image);
+
       resultItem.appendChild(title);
+
       resultItem.appendChild(description);
+      resultItem.appendChild(buyButton);
 
       searchResults.appendChild(resultItem);
     });
