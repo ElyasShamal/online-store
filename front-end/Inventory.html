@@ -40,13 +40,15 @@
     <main>
         <section class="search">
             <form>
-                <input type="text" placeholder="Search...">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <div id="results"></div>
             </form>
               
         </section>
         
-            <h2 id="loading">⌛ Loading...</h2>
-       
+        <section id="loading">
+            <h2>⌛ Loading...</h2>
+          </section>
         <section id="available-products">
             <!-- data from api -->
             <div id="available-item"></div>

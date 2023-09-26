@@ -72,6 +72,7 @@ nav a {
   padding-top: 20px;
   font-size: 1.5rem;
   color: #1e90ff;
+  min-height: 700px;
 }
 
 .slider img {
@@ -153,7 +154,9 @@ i {
 #loading {
   text-align: center;
   color: #1e90ff;
+  min-height: 600px;
 }
+
 #available-products {
   margin: 2rem 5rem;
 }

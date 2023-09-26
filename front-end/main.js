@@ -1,3 +1,5 @@
+const { clear } = require("console");
+
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector("nav");
 
@@ -107,11 +109,8 @@ function createSlider(containerClass) {
 
       const sliders = document.querySelectorAll(containerClass);
 
-      // Create a slider for each  element
       sliders.forEach((slider) => {
         updateSlider(slider);
-
-        // create an interval to update the slider every 10 seconds
         setInterval(() => {
           sliderIndex++;
           if (sliderIndex === images.length) {
@@ -125,3 +124,61 @@ function createSlider(containerClass) {
 }
 
 createSlider(".slider");
+
+document.getElementById("searchInput").addEventListener("input", function () {
+  const searchTerm = this.value;
+  if (!searchTerm.trim()) {
+    clearResults();
+    return;
+  }
+
+  searchAPI(searchTerm);
+});
+
+function searchAPI(searchTerm) {
+  const apiUrl = `https://online-store-1ip2.onrender.com/inventory?query=${searchTerm}`;
+
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      displayResults(data);
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+}
+
+function clearResults() {
+  document.getElementById("results").innerHTML = "";
+}
+
+function displayResults(data) {
+  const resultsContainer = document.getElementById("results");
+  resultsContainer.innerHTML = "";
+
+  if (data.length === 0) {
+    resultsContainer.innerHTML = "No results found.";
+    return;
+  }
+
+  data.forEach((item) => {
+    const resultItem = document.createElement("div");
+    resultItem.classList.add("result-item");
+
+    const title = document.createElement("h3");
+    title.textContent = item.title;
+
+    const description = document.createElement("p");
+    description.textContent = item.description;
+
+    const image = document.createElement("img");
+    image.src = item.imageUrl;
+    image.alt = item.title;
+
+    resultItem.appendChild(title);
+    resultItem.appendChild(description);
+    resultItem.appendChild(image);
+
+    resultsContainer.appendChild(resultItem);
+  });
+}
