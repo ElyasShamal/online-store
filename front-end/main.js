@@ -1,5 +1,3 @@
-const { clear } = require("console");
-
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector("nav");
 
@@ -125,60 +123,73 @@ function createSlider(containerClass) {
 
 createSlider(".slider");
 
-document.getElementById("searchInput").addEventListener("input", function () {
-  const searchTerm = this.value;
-  if (!searchTerm.trim()) {
-    clearResults();
-    return;
-  }
+document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.getElementById("searchInput");
+  const searchResults = document.getElementById("searchResults");
 
-  searchAPI(searchTerm);
-});
+  searchInput.addEventListener("input", debounce(handleSearch, 300));
 
-function searchAPI(searchTerm) {
-  const apiUrl = `https://online-store-1ip2.onrender.com/inventory?query=${searchTerm}`;
+  async function handleSearch() {
+    const query = searchInput.value.trim().toLowerCase();
 
-  fetch(apiUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      displayResults(data);
-    })
-    .catch((error) => {
+    if (query === "") {
+      searchResults.innerHTML = "";
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        `https://online-store-1ip2.onrender.com/inventory`
+      );
+      const inventory = await response.json();
+
+      const results = inventory.filter((item) =>
+        item.name.toLowerCase().includes(query)
+      );
+
+      displayResults(results);
+    } catch (error) {
       console.error("Error fetching data:", error);
-    });
-}
-
-function clearResults() {
-  document.getElementById("results").innerHTML = "";
-}
-
-function displayResults(data) {
-  const resultsContainer = document.getElementById("results");
-  resultsContainer.innerHTML = "";
-
-  if (data.length === 0) {
-    resultsContainer.innerHTML = "No results found.";
-    return;
+    }
   }
 
-  data.forEach((item) => {
-    const resultItem = document.createElement("div");
-    resultItem.classList.add("result-item");
+  function displayResults(results) {
+    searchResults.innerHTML = "";
 
-    const title = document.createElement("h3");
-    title.textContent = item.title;
+    if (results.length === 0) {
+      searchResults.innerHTML = "No results found.";
+      return;
+    }
 
-    const description = document.createElement("p");
-    description.textContent = item.description;
+    results.forEach((item) => {
+      const resultItem = document.createElement("div");
+      resultItem.classList.add("result-item");
 
-    const image = document.createElement("img");
-    image.src = item.imageUrl;
-    image.alt = item.title;
+      const title = document.createElement("h3");
+      title.textContent = item.name;
 
-    resultItem.appendChild(title);
-    resultItem.appendChild(description);
-    resultItem.appendChild(image);
+      const description = document.createElement("p");
+      description.textContent = item.description;
 
-    resultsContainer.appendChild(resultItem);
-  });
-}
+      const image = document.createElement("img");
+      image.src = item.image;
+      image.alt = item.name;
+
+      resultItem.appendChild(image);
+      resultItem.appendChild(title);
+      resultItem.appendChild(description);
+
+      searchResults.appendChild(resultItem);
+    });
+  }
+
+  function debounce(func, delay) {
+    let timeout;
+    return function () {
+      const context = this;
+      const args = arguments;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(context, args), delay);
+    };
+  }
+});
